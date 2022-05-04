@@ -86,6 +86,7 @@ public class Automate {
             return false;
         }
         while(i< automate.getNbr_trans()){
+            j = i + 1;
             while(j< automate.getNbr_trans()){
                 //si l'état et la lettre sont les mêmes alors non déterministe
                 if(automate.getTransition()[i].charAt(0) == automate.getTransition()[j].charAt(0) && automate.getAlphabet()[i] == automate.getAlphabet()[j]){
@@ -104,7 +105,8 @@ public class Automate {
         int cpt = 0;
         // i et j comptent le nombre de fois qu'il y a un état
         while (i< automate.getNbr_trans()){
-            while (j> automate.getNbr_trans()){
+            j = i + 1;
+            while (j< automate.getNbr_trans()){
                 if(automate.getTransition()[i].charAt(0) == automate.getTransition()[j].charAt(0)){
                     cpt++;
                 }

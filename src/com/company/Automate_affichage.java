@@ -30,7 +30,7 @@ public class Automate_affichage {
             i++;
         }
         int nbr_etat_fin = Integer.parseInt(scanner.next()); //recuperation du nombre d'etats finaux
-        int [] etat_fin = new int[nbr_etat_init];
+        int [] etat_fin = new int[nbr_etat_fin];
         //remplissage
         i = 0;
         while(i<nbr_etat_fin){
