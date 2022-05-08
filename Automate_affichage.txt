@@ -30,7 +30,7 @@ public class Automate_affichage {
             i++;
         }
         int nbr_etat_fin = Integer.parseInt(scanner.next()); //recuperation du nombre d'etats finaux
-        int [] etat_fin = new int[nbr_etat_fin];
+        int [] etat_fin = new int[nbr_etat_init];
         //remplissage
         i = 0;
         while(i<nbr_etat_fin){
@@ -97,41 +97,33 @@ public class Automate_affichage {
             System.out.print(automate.getEtat()[i]+"         ");
 
             // LES TRANSITIONS
-                j = 0;
-                String trans;
-                String epsilon = "";
-                String poubelle = "";
-                while(j<automate.getNbr_symbole()){ // boucle pour faire tout les symbole  de l'alphabet
-                    trans = "";
-                    k=0;
-                    while(k<automate.getNbr_trans()) { // boucle qui va parcourir les transitions et tester si on ajoute à la table la transition
-                        //si le caractere  du milieu = le symbole de la colonne et si l'etat correspond à l'etat de la ligne alors on l'ajouteà la case
-                        if(automate.getTransition()[k].charAt(1) == automate.getAlphabet()[j] && Integer.parseInt(String.valueOf((automate.getTransition()[k].charAt(0)))) == automate.getEtat()[i]){
-                            trans += automate.getTransition()[k].charAt(2)+",";
-                        }
-                        else if(automate.getTransition()[k].charAt(1) == '*' && Integer.parseInt(String.valueOf((automate.getTransition()[k].charAt(0)))) == automate.getEtat()[i] && j == 0) {
-                            epsilon += automate.getTransition()[k].charAt(2)+",";
-                        } // pour Epsilone, ATTENTION : repetition de la transition a cause de la boucle
-                        k++;
+            j = 0;
+            String trans;
+            String epsilon = "";
+            while(j<automate.getNbr_symbole()){ // boucle pour faire tout les symbole  de l'alphabet
+                trans = "";
+                k=0;
+                while(k<automate.getNbr_trans()) { // boucle qui va parcourir les transitions et tester si on ajoute à la table la transition
+                    //si le caractere  du milieu = le symbole de la colonne et si l'etat correspond à l'etat de la ligne alors on l'ajouteà la case
+                    if(automate.getTransition()[k].charAt(1) == automate.getAlphabet()[j] && Integer.parseInt(String.valueOf((automate.getTransition()[k].charAt(0)))) == automate.getEtat()[i]){
+                        trans += automate.getTransition()[k].charAt(2);
                     }
-
-                    switch (trans.length()) { //print des transition
-                        case 0 -> {
-                            if(automate.getEtat()[i] != -1){
-                                System.out.print("-         ");
-                            }
-                            else{
-                                System.out.print("p         ");
-                            }
-                        }
-                        case 1 -> System.out.print(trans + "         ");
-                        case 2 -> System.out.print(trans + "        ");
-                        case 3 -> System.out.print(trans + "       ");
-                        case 4 -> System.out.print(trans + "      ");
-                        case 5 -> System.out.print(trans + "     ");
-                    }
-                    j++;
+                    else if(automate.getTransition()[k].charAt(1) == '*' && Integer.parseInt(String.valueOf((automate.getTransition()[k].charAt(0)))) == automate.getEtat()[i] && j == 0) {
+                        epsilon += automate.getTransition()[k].charAt(2);
+                    } // pour Epsilone, ATTENTION : repetition de la transition a cause de la boucle
+                    k++;
                 }
+
+                switch (trans.length()) { //print des transition
+                    case 0 -> System.out.print("-         ");
+                    case 1 -> System.out.print(trans + "         ");
+                    case 2 -> System.out.print(trans + "        ");
+                    case 3 -> System.out.print(trans + "       ");
+                    case 4 -> System.out.print(trans + "      ");
+                    case 5 -> System.out.print(trans + "     ");
+                }
+                j++;
+            }
 
             if(epsilon.equals("")) {
                 System.out.print("-"); //print si pas de transition epsilon

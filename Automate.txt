@@ -1,0 +1,66 @@
+package com.company;
+
+public class Automate {
+    private final static char [] alphabet = {'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'};
+    private final int nbr_symbole;
+    private int nbr_etat;
+    private int [] etat;
+    private int nbr_etat_init;
+    private int [] etat_init;
+    private int nbr_etat_fin;
+    private int [] etat_fin;
+    private int nbr_trans;
+    private String [] transition;
+
+    public char[] getAlphabet() {
+        return alphabet;
+    }
+
+    public int getNbr_etat() {
+        return nbr_etat;
+    }
+
+    public int getNbr_symbole() {
+        return nbr_symbole;
+    }
+
+    public String[] getTransition() {
+        return transition;
+    }
+
+    public int[] getEtat() {
+        return etat;
+    }
+
+    public int getNbr_etat_fin() {
+        return nbr_etat_fin;
+    }
+
+    public int getNbr_etat_init() {
+        return nbr_etat_init;
+    }
+
+    public int[] getEtat_fin() {
+        return etat_fin;
+    }
+
+    public int[] getEtat_init() {
+        return etat_init;
+    }
+
+    public int getNbr_trans() {
+        return nbr_trans;
+    }
+
+    public Automate(int nbr_symbole, int nbr_etat, int [] etat, int nbr_etat_init, int[] etat_init, int nbr_etat_fin, int[] etat_fin, int nbr_trans,  String[] transition){
+        this.nbr_symbole = nbr_symbole;
+        this.nbr_etat = nbr_etat;
+        this.etat = etat;
+        this.nbr_etat_init = nbr_etat_init;
+        this.etat_init = etat_init;
+        this.nbr_etat_fin = nbr_etat_fin;
+        this.etat_fin = etat_fin;
+        this.transition = transition;
+        this.nbr_trans = nbr_trans;
+    }
+}
